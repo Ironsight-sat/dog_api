@@ -23,10 +23,11 @@ async function handler(req, id) {
                 return Response.json({ error: "Please fill all fields" }, { status: 400 });
             }
             try {
+                
                 const list = await List.create({ name, data:data, user:userId });
                 return Response.json({ success: true, data: list }, { status: 200 });
             } catch (error) {
-                console.error("Error saving list:", error);
+                console.log("Error saving list:", error);
                 return Response.json({ error: error.message }, { status: 500 });
             }
         } 

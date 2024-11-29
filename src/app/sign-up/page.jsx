@@ -49,82 +49,95 @@ const SignUpPage = () => {
    }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800">
-      <div className='w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md'>
-      <div className="text-center">
-      <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Register Here
-          </h1>
-          <p className="mb-4">Sign up</p>
-        </div>
-        <Form {...form}>
+    <div className="flex justify-center items-center min-h-screen bg-gray-900 text-gray-100">
+  <div className="w-full max-w-md p-8 space-y-8 bg-gray-800 rounded-lg shadow-lg">
+    <div className="text-center">
+      <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6 text-white">
+        Register Here
+      </h1>
+      <p className="mb-4 text-gray-400">Sign up</p>
+    </div>
+    <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="fullName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel className="text-gray-300">Full Name</FormLabel>
               <FormControl>
-                <Input placeholder="Full Name" {...field}
-                onChange={(e)=>{
-                  field.onChange(e)
-                  setfullName(e.target.value)
-                }}
-              />
+                <Input
+                  placeholder="Full Name"
+                  {...field}
+                  onChange={(e) => {
+                    field.onChange(e);
+                    setfullName(e.target.value);
+                  }}
+                  className="bg-gray-700 text-gray-100 border-gray-600 focus:ring-blue-500 focus:border-blue-500"
+                />
               </FormControl>
-              
               <FormMessage />
             </FormItem>
           )}
         />
-           <FormField
-              name="email"
-              control={form.control}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <Input {...field} name="email" />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              name="password"
-              control={form.control}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <Input type="password" {...field} name="password" />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-       <Button type="submit" className='w-full' disabled={isSubmiting}>
-              {isSubmiting ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Please wait
-                </>
-              ) : (
-                'Sign Up'
-              )}
-            </Button>
+        <FormField
+          name="email"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-gray-300">Email</FormLabel>
+              <Input
+                {...field}
+                name="email"
+                className="bg-gray-700 text-gray-100 border-gray-600 focus:ring-blue-500 focus:border-blue-500"
+              />
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="password"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-gray-300">Password</FormLabel>
+              <Input
+                type="password"
+                {...field}
+                name="password"
+                className="bg-gray-700 text-gray-100 border-gray-600 focus:ring-blue-500 focus:border-blue-500"
+              />
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+          disabled={isSubmiting}
+        >
+          {isSubmiting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Please wait
+            </>
+          ) : (
+            "Sign Up"
+          )}
+        </Button>
       </form>
     </Form>
     <div className="text-center mt-4">
-          <p>
-            Already a member?{' '}
-            <Link href="/sign-in" className="text-blue-600 hover:text-blue-800">
-              Sign in
-            </Link>
-          </p>
-        </div>
-
-      </div>
-      
+      <p>
+        Already a member?{" "}
+        <Link href="/sign-in" className="text-blue-500 hover:text-blue-400">
+          Sign in
+        </Link>
+      </p>
     </div>
+  </div>
+</div>
+
   )
 }
 
